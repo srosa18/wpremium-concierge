@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voo · In-Lounge · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/wireframe.css">
+</head>
+<body style="background:var(--g200);">
+
+<div class="wf-banner">Wireframe Mode · 02d Informações do Voo · 375px</div>
+
+<div style="max-width:980px;margin:0 auto;padding:24px 20px;">
+  <div class="flex items-center justify-between mb-3">
+    <div>
+      <div class="eyebrow">In-Lounge Mobile · 02d</div>
+      <h1 class="h3 mt-1">Informações do Voo</h1>
+    </div>
+    <div class="flex gap-1" style="flex-wrap:wrap;">
+      <a href="welcome.html" class="chip">Welcome</a>
+      <a href="cardapio.html" class="chip">Cardápio</a>
+      <a href="servico.html" class="chip">Serviço</a>
+      <a href="voo.html" class="chip active">Voo</a>
+      <a href="avaliacao.html" class="chip">Avaliação</a>
+    </div>
+  </div>
+
+  <div class="mobile-stage">
+    <div class="mob-bar">09:41 · The Pier</div>
+
+    <div class="mob-content">
+      <h2 style="font-size:22px;font-weight:700;margin:0 0 6px;">Seu Voo</h2>
+      <p style="font-size:12px;color:var(--g600);margin:0 0 16px;">Atualizado em tempo real com a companhia.</p>
+
+      <div class="card card-body" style="padding:20px;background:var(--g100);border:1px solid var(--border);">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="tiny" style="letter-spacing:.14em;text-transform:uppercase;color:var(--g600);">Voo</div>
+            <div style="font-size:24px;font-weight:700;line-height:1;margin-top:4px;">AA 1234</div>
+          </div>
+          <span class="badge badge-dark">Pontual</span>
+        </div>
+
+        <div class="mt-3 flex items-center justify-between">
+          <div>
+            <div style="font-size:18px;font-weight:600;">GRU</div>
+            <div class="tiny muted">São Paulo</div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:8px;padding:0 16px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--g900);"></span>
+            <span style="flex:1;height:1px;background:var(--g400);"></span>
+            <span style="font-size:18px;">✈</span>
+            <span style="flex:1;height:1px;background:var(--g400);"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--g400);"></span>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:18px;font-weight:600;">MIA</div>
+            <div class="tiny muted">Miami</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card mt-2">
+        <div class="lbl">Decolagem</div>
+        18:30 · Portão A12
+      </div>
+      <div class="info-card">
+        <div class="lbl">Status</div>
+        <span style="color:#2E6B4A;">● A bordo em 20 minutos</span>
+      </div>
+      <div class="info-card">
+        <div class="lbl">Classe</div>
+        Business Class · Assento 2A · Janela
+      </div>
+      <div class="info-card">
+        <div class="lbl">Bagagem</div>
+        2 malas despachadas · 1 de mão
+      </div>
+
+      <div class="note note-warn mt-3" style="font-size:12px;">
+        ⚠ Faltam 45 minutos para o embarque. Sugerimos preparar-se para o portão.
+      </div>
+
+      <button class="btn btn-secondary btn-block mt-3">+ Adicionar Alerta de Embarque</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

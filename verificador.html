@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verificador de Acesso · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body data-prefix="">
+
+<div data-nav></div>
+
+<div class="container">
+  <div class="crumb"><a href="index.html">Início</a> <span class="sep">/</span> <a href="como-acessar.html">Como Acessar</a> <span class="sep">/</span> <span style="color:var(--g900);">Verificador de Acesso</span></div>
+</div>
+
+<div class="container">
+  <div class="note mt-3" style="font-size:13px;">
+    💡 <strong>Killer Feature.</strong> Na Fase 03, o Verificador é um <strong>modal global</strong> — disponível em qualquer página via botão "Verificar Acesso" na nav. Esta página standalone existe como deep-link e fallback de SEO.
+    <button class="btn btn-link" data-open-verifier style="margin-left:8px;">Abrir como modal →</button>
+  </div>
+</div>
+
+<!-- STATE 1 · INPUT -->
+<section class="section" id="state-input">
+  <div class="container" style="max-width:640px;">
+    <div class="text-center">
+      <div class="eyebrow">Estado 01 · Consulta</div>
+      <h1 class="h1 mt-1">Você é Elegível?</h1>
+      <p class="lead muted mt-2">Insira o BIN do seu cartão. Em segundos, descubra quais salas você tem direito hoje, por qual programa, com quais condições.</p>
+    </div>
+
+    <form id="verif-form" class="card card-body mt-4" style="padding:32px;">
+      <div class="field mb-3">
+        <label>Número do cartão (BIN ou completo)</label>
+        <input class="input" inputmode="numeric" maxlength="19" placeholder="0000  0000  0000  0000" required>
+      </div>
+      <div class="grid grid-2 mb-3">
+        <div class="field"><label>Validade</label><input class="input" placeholder="MM/AA"></div>
+        <div class="field"><label>Bandeira (opcional)</label>
+          <select class="select"><option>Detectar automaticamente</option><option>Visa</option><option>Mastercard</option><option>American Express</option><option>Elo</option><option>Diners</option></select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Verificar Acesso</button>
+      <p class="tiny muted mt-2 text-center">Consultivo · não armazenamos seus dados. Validação local apenas.</p>
+    </form>
+
+    <div class="note mt-4">
+      💡 <strong>Demo:</strong> cartões começando com <strong>3, 4 ou 5</strong> (≥13 dígitos) retornam estado <strong>elegível</strong>. Outros retornam <strong>inelegível</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- STATE 2 · SUCCESS -->
+<section class="section" id="state-success" style="display:none;">
+  <div class="container">
+    <div class="state-success mb-4">
+      <div class="eyebrow" style="color:#2E6B4A;">Estado 02 · Elegível</div>
+      <h1 class="h1 mt-1" style="color:#2E6B4A;">✓ Você é Elegível!</h1>
+      <p class="lead mt-2" style="color:#2E6B4A;">Parabéns. Seu cartão oferece acesso a <strong>15 salas</strong> W Premium agora mesmo. Escolha qual você quer visitar:</p>
+      <div class="mt-3 flex gap-1">
+        <a href="salas.html" class="btn btn-primary">Ver todas as salas elegíveis</a>
+        <button class="btn btn-secondary" data-verif-reset>Verificar outro cartão</button>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"><span class="ph-tag">Premium</span></div><div class="card-body"><h3 class="sala-title">5th Avenue</h3><p class="sala-meta">GRU · T3</p><a href="sala-5th-avenue.html" class="btn-link">Entrar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"><span class="ph-tag">Premium</span></div><div class="card-body"><h3 class="sala-title">Frevo</h3><p class="sala-meta">REC</p><a href="sala-frevo.html" class="btn-link">Entrar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"></div><div class="card-body"><h3 class="sala-title">Green Park</h3><p class="sala-meta">GRU · T2</p><a href="sala-5th-avenue.html" class="btn-link">Entrar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"></div><div class="card-body"><h3 class="sala-title">Ocean View</h3><p class="sala-meta">REC</p><a href="sala-frevo.html" class="btn-link">Entrar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"></div><div class="card-body"><h3 class="sala-title">Copacabana</h3><p class="sala-meta">GIG · T2</p><a href="sala-5th-avenue.html" class="btn-link">Entrar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:16/10;"></div><div class="card-body"><h3 class="sala-title">Skyline</h3><p class="sala-meta">POA</p><a href="sala-5th-avenue.html" class="btn-link">Entrar →</a></div></article>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="salas.html" class="btn-link">Ver as outras 9 salas elegíveis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATE 3 · FAIL -->
+<section class="section" id="state-fail" style="display:none;">
+  <div class="container">
+    <div class="state-error mb-4">
+      <div class="eyebrow" style="color:#8A3326;">Estado 03 · Inelegível</div>
+      <h1 class="h1 mt-1" style="color:#8A3326;">Seu cartão não tem acesso neste momento</h1>
+      <p class="lead mt-2" style="color:#8A3326;">Mas você pode adquirir acesso com o <strong>W Day Pass</strong>. Escolha um plano que se adeque ao seu estilo de vida:</p>
+      <div class="mt-3">
+        <button class="btn btn-secondary" data-verif-reset>Verificar outro cartão</button>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <div class="price-card">
+        <div><div class="price-name">Diário</div><div class="price-value mt-1">R$ 240<small>24 horas</small></div></div>
+        <ul class="price-features"><li>1 entrada</li><li>Todas as amenidades</li><li>Renovável</li></ul>
+        <a href="formas-de-acesso.html" class="btn btn-secondary btn-block">Adquirir Diário</a>
+      </div>
+      <div class="price-card highlight">
+        <div><div class="price-name">Mensal</div><div class="price-value mt-1">R$ 890<small>30 dias · 6 entradas</small></div></div>
+        <ul class="price-features"><li>6 entradas</li><li>Prioridade na fila</li><li>Desconto F&amp;B</li></ul>
+        <a href="formas-de-acesso.html" class="btn btn-primary btn-block">Adquirir Mensal</a>
+      </div>
+      <div class="price-card">
+        <div><div class="price-name">Anual</div><div class="price-value mt-1">R$ 6.990<small>12 meses</small></div></div>
+        <ul class="price-features"><li>Acesso ilimitado</li><li>Consultoria 1:1</li><li>Convites a eventos</li></ul>
+        <a href="formas-de-acesso.html" class="btn btn-secondary btn-block">Adquirir Anual</a>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="b2b.html" class="btn-link">Ou veja condições corporativas (B2B) →</a>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+<div data-modal-mount></div>
+<script src="js/app.js"></script>
+</body>
+</html>

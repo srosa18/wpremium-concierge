@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Salas · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body data-prefix="">
+
+<div data-nav></div>
+
+<div class="container">
+  <div class="crumb"><a href="index.html">Início</a> <span class="sep">/</span> <span style="color:var(--g900);">Salas</span></div>
+
+  <div class="sec-header" style="max-width:760px;">
+    <div class="eyebrow">Hub · Salas</div>
+    <h1 class="h1 mt-1">21+ salas. 14 aeroportos. Uma curadoria.</h1>
+    <p>Comece pelo aeroporto. Cada cidade entra na sala junto com você.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap mb-3" style="max-width:720px;">
+    <div class="search-bar">
+      <input id="airport-search" type="text" placeholder="Digite IATA ou cidade…" autocomplete="off">
+      <button class="btn btn-primary">Buscar</button>
+    </div>
+    <div id="airport-suggest" class="suggest-box"></div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="flex gap-1 mb-4" data-chip-group style="flex-wrap:wrap;">
+    <button class="chip active">Todos os aeroportos</button>
+    <button class="chip">Premium</button>
+    <button class="chip">Internacional</button>
+    <button class="chip">Doméstico</button>
+    <button class="chip">24h</button>
+    <button class="chip">Com nap rooms</button>
+  </div>
+</div>
+
+<!-- HUB POR AEROPORTO -->
+<section class="section-tight">
+  <div class="container">
+    <div class="eyebrow mb-3">Por aeroporto · 14 hubs no padrão Fase 03</div>
+    <div class="grid grid-4">
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">GRU</div>
+        <div class="small muted mt-1">Guarulhos · São Paulo</div>
+        <div class="small mt-2"><strong>3 salas</strong> · The Pier · 5th Avenue · Green Park</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-rec.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">REC</div>
+        <div class="small muted mt-1">Recife</div>
+        <div class="small mt-2"><strong>2 salas</strong> · Frevo · Ocean View</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-for.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">FOR</div>
+        <div class="small muted mt-1">Fortaleza</div>
+        <div class="small mt-2"><strong>2 salas</strong> · Business Lounge · Iracema</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gig.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">GIG</div>
+        <div class="small muted mt-1">Galeão · Rio de Janeiro</div>
+        <div class="small mt-2"><strong>2 salas</strong> · Copacabana · Ipanema</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">CGH</div>
+        <div class="small muted mt-1">Congonhas · São Paulo</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Paulista</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">BSB</div>
+        <div class="small muted mt-1">Brasília</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Cerrado</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">POA</div>
+        <div class="small muted mt-1">Porto Alegre</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Skyline</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">SSA</div>
+        <div class="small muted mt-1">Salvador</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Pelourinho</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">FTE</div>
+        <div class="small muted mt-1">El Calafate · AR</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Patagônia</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">USH</div>
+        <div class="small muted mt-1">Ushuaia · AR</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Beagle</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">REL</div>
+        <div class="small muted mt-1">Trelew · AR</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Pampa</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">CWB</div>
+        <div class="small muted mt-1">Curitiba</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Pinhão</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">CNF</div>
+        <div class="small muted mt-1">Confins · Belo Horizonte</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Minas</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+      <a href="aeroporto-gru.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="airport-iata" style="font-size:48px;">MAO</div>
+        <div class="small muted mt-1">Manaus</div>
+        <div class="small mt-2"><strong>1 sala</strong> · Amazonas</div>
+        <span class="btn-link mt-3">Ver hub →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TODAS AS SALAS · LISTA -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header-row">
+      <div class="sec-header" style="margin:0;">
+        <div class="eyebrow">Todas as salas</div>
+        <h2 class="h2 mt-1">21 produtos editoriais</h2>
+      </div>
+      <span class="small muted">Ordenar por: <strong style="color:var(--g900);">Relevância editorial ↓</strong></span>
+    </div>
+
+    <div class="grid grid-3 mt-3">
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"><span class="ph-tag">Premium</span></div><div class="card-body"><h3 class="sala-title">5th Avenue</h3><p class="sala-meta">GRU · T3</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"><span class="ph-tag">Premium</span></div><div class="card-body"><h3 class="sala-title">Frevo</h3><p class="sala-meta">REC · Internacional</p><a href="sala-frevo.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Green Park</h3><p class="sala-meta">GRU · T2</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Ocean View</h3><p class="sala-meta">REC · Desembarque</p><a href="sala-frevo.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"><span class="ph-tag">Premium</span></div><div class="card-body"><h3 class="sala-title">Gold Standard</h3><p class="sala-meta">GRU · T1</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Business Lounge</h3><p class="sala-meta">FOR</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Iracema</h3><p class="sala-meta">FOR · Internacional</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Copacabana</h3><p class="sala-meta">GIG · Internacional</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+      <article class="card sala-card"><div class="ph" style="aspect-ratio:4/3;"></div><div class="card-body"><h3 class="sala-title">Ipanema</h3><p class="sala-meta">GIG · Doméstico</p><a href="sala-5th-avenue.html" class="btn-link">Explorar →</a></div></article>
+    </div>
+    <div class="text-center mt-5"><button class="btn btn-secondary">Carregar mais salas (+12)</button></div>
+  </div>
+</section>
+
+<div data-footer></div>
+<div data-modal-mount></div>
+<script src="js/app.js"></script>
+</body>
+</html>

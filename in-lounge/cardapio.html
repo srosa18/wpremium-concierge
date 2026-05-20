@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cardápio · In-Lounge · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/wireframe.css">
+</head>
+<body style="background:var(--g200);">
+
+<div class="wf-banner">Wireframe Mode · 02b Cardápio · 375px</div>
+
+<div style="max-width:980px;margin:0 auto;padding:24px 20px;">
+  <div class="flex items-center justify-between mb-3">
+    <div>
+      <div class="eyebrow">In-Lounge Mobile · 02b</div>
+      <h1 class="h3 mt-1">Menu / Cardápio</h1>
+    </div>
+    <div class="flex gap-1" style="flex-wrap:wrap;">
+      <a href="welcome.html" class="chip">Welcome</a>
+      <a href="cardapio.html" class="chip active">Cardápio</a>
+      <a href="servico.html" class="chip">Serviço</a>
+      <a href="voo.html" class="chip">Voo</a>
+      <a href="avaliacao.html" class="chip">Avaliação</a>
+    </div>
+  </div>
+
+  <div class="mobile-stage">
+    <div class="mob-bar">09:41 · The Pier</div>
+
+    <div class="mob-content">
+      <h2 style="font-size:22px;font-weight:700;margin:0 0 6px;">Cardápio</h2>
+      <p style="font-size:12px;color:var(--g600);margin:0 0 16px;">Designed by Chef Rodrigo Costa</p>
+
+      <div class="tab-bar" data-chip-group>
+        <button class="chip active">Café</button>
+        <button class="chip">Bebidas</button>
+        <button class="chip">Lanches</button>
+        <button class="chip">Pratos</button>
+        <button class="chip">Sobremesas</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Café Espresso</div>
+          <div class="item-desc">Grãos selecionados, extraído na hora</div>
+        </div>
+        <span class="item-price">R$ 12</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Cappuccino</div>
+          <div class="item-desc">Leite vaporizado, cacau opcional</div>
+        </div>
+        <span class="item-price">R$ 16</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Água de Coco</div>
+          <div class="item-desc">Gelada · fornecedor nordestino</div>
+        </div>
+        <span class="item-price">R$ 8</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Suco Natural do Dia</div>
+          <div class="item-desc">Laranja-pêra ou abacaxi-hortelã</div>
+        </div>
+        <span class="item-price">R$ 14</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Pão de Queijo</div>
+          <div class="item-desc">Mineiro · porção com 4 unidades</div>
+        </div>
+        <span class="item-price">R$ 8</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div style="flex:1;">
+          <div class="item-name">Sanduíche de Frango</div>
+          <div class="item-desc">Pão integral, mostarda Dijon, agrião</div>
+        </div>
+        <span class="item-price">R$ 24</span>
+        <button class="item-add" aria-label="Adicionar">+</button>
+      </div>
+
+      <div class="info-card mt-3" style="background:var(--g900);color:#fff;border-color:var(--g900);">
+        <div class="lbl" style="color:rgba(255,255,255,.5);">Resumo do Pedido</div>
+        <div class="flex justify-between mt-1">
+          <span style="font-size:13px;color:#fff;">3 itens · entrega em ~5 min</span>
+          <strong style="color:#fff;">R$ 36</strong>
+        </div>
+        <button class="btn btn-primary btn-block mt-2" style="background:#fff;color:var(--g900);">Confirmar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

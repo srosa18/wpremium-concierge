@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pedir Serviço · In-Lounge · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/wireframe.css">
+</head>
+<body style="background:var(--g200);">
+
+<div class="wf-banner">Wireframe Mode · 02c Pedir Serviço · 375px</div>
+
+<div style="max-width:980px;margin:0 auto;padding:24px 20px;">
+  <div class="flex items-center justify-between mb-3">
+    <div>
+      <div class="eyebrow">In-Lounge Mobile · 02c</div>
+      <h1 class="h3 mt-1">Pedir Serviço</h1>
+    </div>
+    <div class="flex gap-1" style="flex-wrap:wrap;">
+      <a href="welcome.html" class="chip">Welcome</a>
+      <a href="cardapio.html" class="chip">Cardápio</a>
+      <a href="servico.html" class="chip active">Serviço</a>
+      <a href="voo.html" class="chip">Voo</a>
+      <a href="avaliacao.html" class="chip">Avaliação</a>
+    </div>
+  </div>
+
+  <div class="mobile-stage">
+    <div class="mob-bar">09:41 · The Pier</div>
+
+    <div class="mob-content">
+      <h2 style="font-size:22px;font-weight:700;margin:0 0 6px;">Solicitar Serviço</h2>
+      <p style="font-size:12px;color:var(--g600);margin:0 0 16px;">Toque na opção que você precisa.</p>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label class="info-card" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+          <input type="radio" name="serv" checked style="accent-color:#1A1A18;">
+          <div>
+            <div style="font-size:13px;font-weight:600;">Toalhas extras</div>
+            <div class="tiny muted">Para chuveiro ou descanso</div>
+          </div>
+        </label>
+        <label class="info-card" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+          <input type="radio" name="serv">
+          <div>
+            <div style="font-size:13px;font-weight:600;">Limpeza do ambiente</div>
+            <div class="tiny muted">Refrescar a área onde estou</div>
+          </div>
+        </label>
+        <label class="info-card" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+          <input type="radio" name="serv">
+          <div>
+            <div style="font-size:13px;font-weight:600;">Consultoria com Concierge</div>
+            <div class="tiny muted">Atendimento presencial ao seu assento</div>
+          </div>
+        </label>
+        <label class="info-card" style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+          <input type="radio" name="serv">
+          <div>
+            <div style="font-size:13px;font-weight:600;">Assistência Médica</div>
+            <div class="tiny muted">Equipe disponível em 3 minutos</div>
+          </div>
+        </label>
+      </div>
+
+      <div class="mt-3">
+        <div style="font-size:11px;font-weight:600;color:var(--g700);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;">Detalhes Adicionais</div>
+        <textarea class="textarea" placeholder="Descreva sua solicitação (opcional)…"></textarea>
+      </div>
+
+      <form data-form-demo data-form-msg="Pedido recebido. A equipe será notificada e te atende em até 5 minutos." class="mt-3">
+        <button class="btn btn-primary btn-block">Solicitar Serviço</button>
+      </form>
+
+      <p class="tiny muted text-center mt-2">Seu pedido será respondido em até 5 minutos.</p>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

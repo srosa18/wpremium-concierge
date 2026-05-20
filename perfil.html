@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perfil · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body data-prefix="">
+
+<div data-nav></div>
+
+<div class="container">
+  <div class="crumb"><a href="index.html">Início</a> <span class="sep">/</span> <a href="dashboard.html">Conta</a> <span class="sep">/</span> <span style="color:var(--g900);">Perfil</span></div>
+</div>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="dashboard">
+
+      <aside class="dash-side">
+        <h5>Conta · Marina Albuquerque</h5>
+        <ul class="dash-menu">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="minhas-reservas.html">Minhas Reservas</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="preferencias.html">Preferências</a></li>
+          <li><a href="perfil.html" class="active">Perfil</a></li>
+        </ul>
+        <h5 style="margin-top:24px;">Acesso</h5>
+        <ul class="dash-menu">
+          <li><a href="formas-de-acesso.html">Meus cartões</a></li>
+          <li><a href="como-acessar.html">Day Pass</a></li>
+          <li><a href="#"><span class="muted">Sair</span></a></li>
+        </ul>
+      </aside>
+
+      <main class="dash-main">
+        <h1 class="dash-greeting">Perfil</h1>
+        <p class="dash-sub">Seus dados de cadastro e segurança da conta.</p>
+
+        <!-- DADOS PESSOAIS -->
+        <div class="card card-body mb-3" style="padding:28px;">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="h3">Dados pessoais</h3>
+            <button class="btn btn-ghost btn-sm">Editar</button>
+          </div>
+          <div class="grid grid-2 gap-2">
+            <div class="field"><label>Nome completo</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">Marina Albuquerque</div></div>
+            <div class="field"><label>Data de nascimento</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">14 Mar 1988</div></div>
+            <div class="field"><label>Email</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">marina@exemplo.com</div></div>
+            <div class="field"><label>Telefone</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">+55 11 99000-0000</div></div>
+            <div class="field"><label>CPF</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">000.000.000-00</div></div>
+            <div class="field"><label>Idioma de preferência</label><div style="padding:12px 0;font-size:14px;color:var(--g800);">Português · PT-BR</div></div>
+          </div>
+        </div>
+
+        <!-- ENDEREÇO -->
+        <div class="card card-body mb-3" style="padding:28px;">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="h3">Endereço de cobrança</h3>
+            <button class="btn btn-ghost btn-sm">Editar</button>
+          </div>
+          <p class="small" style="line-height:1.7;">R. Cristiano Viana, 1230 · ap. 81<br>Pinheiros · São Paulo · SP<br>05411-001</p>
+        </div>
+
+        <!-- SEGURANÇA -->
+        <div class="card card-body mb-3" style="padding:28px;">
+          <h3 class="h3 mb-3">Segurança</h3>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;">
+            <li class="flex justify-between" style="padding:14px 0;border-bottom:1px solid var(--border);"><span><strong>Senha</strong><br><span class="tiny muted">Alterada há 47 dias</span></span><button class="btn btn-secondary btn-sm">Alterar</button></li>
+            <li class="flex justify-between" style="padding:14px 0;border-bottom:1px solid var(--border);"><span><strong>Autenticação em 2 fatores</strong><br><span class="tiny muted">SMS · ativado</span></span><button class="btn btn-secondary btn-sm">Gerenciar</button></li>
+            <li class="flex justify-between" style="padding:14px 0;"><span><strong>Dispositivos conectados</strong><br><span class="tiny muted">3 dispositivos · último acesso hoje 17:42</span></span><button class="btn btn-secondary btn-sm">Ver lista</button></li>
+          </ul>
+        </div>
+
+        <!-- LGPD -->
+        <div class="card card-body mb-3" style="padding:28px;">
+          <h3 class="h3 mb-3">Dados &amp; privacidade · LGPD</h3>
+          <div class="flex gap-1 mt-2" style="flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm">Baixar meus dados</button>
+            <button class="btn btn-secondary btn-sm">Revisar consentimentos</button>
+            <button class="btn btn-ghost btn-sm" style="color:var(--red);">Excluir minha conta</button>
+          </div>
+          <p class="tiny muted mt-2">Para exercer seus direitos LGPD: <a href="privacidade.html" style="text-decoration:underline;">leia a política</a> ou contate <a href="mailto:dpo@wpremium.com.br">dpo@wpremium.com.br</a>.</p>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+<div data-modal-mount></div>
+<script src="js/app.js"></script>
+</body>
+</html>

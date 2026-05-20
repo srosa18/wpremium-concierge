@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preferências · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body data-prefix="">
+
+<div data-nav></div>
+
+<div class="container">
+  <div class="crumb"><a href="index.html">Início</a> <span class="sep">/</span> <a href="dashboard.html">Conta</a> <span class="sep">/</span> <span style="color:var(--g900);">Preferências</span></div>
+</div>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="dashboard">
+
+      <aside class="dash-side">
+        <h5>Conta · Marina Albuquerque</h5>
+        <ul class="dash-menu">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="minhas-reservas.html">Minhas Reservas</a></li>
+          <li><a href="historico.html">Histórico</a></li>
+          <li><a href="preferencias.html" class="active">Preferências</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+        </ul>
+        <h5 style="margin-top:24px;">Acesso</h5>
+        <ul class="dash-menu">
+          <li><a href="formas-de-acesso.html">Meus cartões</a></li>
+          <li><a href="como-acessar.html">Day Pass</a></li>
+          <li><a href="#"><span class="muted">Sair</span></a></li>
+        </ul>
+      </aside>
+
+      <main class="dash-main">
+        <h1 class="dash-greeting">Preferências</h1>
+        <p class="dash-sub">Suas escolhas para uma experiência personalizada in-lounge.</p>
+
+        <form data-form-demo data-form-msg="Preferências atualizadas. Aplicam-se à próxima visita.">
+
+          <!-- F&B -->
+          <div class="card card-body mb-3" style="padding:28px;">
+            <h3 class="h3 mb-2">Alimentação &amp; Bebidas</h3>
+            <p class="small muted mb-3">Preferências consideradas pelos chefs nas próximas visitas.</p>
+
+            <div class="field mb-2">
+              <label>Dietas / restrições</label>
+              <div class="flex gap-1" style="flex-wrap:wrap;">
+                <label class="chip"><input type="checkbox" style="margin-right:6px;">Vegetariana</label>
+                <label class="chip"><input type="checkbox" style="margin-right:6px;">Vegana</label>
+                <label class="chip"><input type="checkbox" style="margin-right:6px;" checked>Sem lactose</label>
+                <label class="chip"><input type="checkbox" style="margin-right:6px;">Sem glúten</label>
+                <label class="chip"><input type="checkbox" style="margin-right:6px;">Kosher</label>
+                <label class="chip"><input type="checkbox" style="margin-right:6px;">Halal</label>
+              </div>
+            </div>
+
+            <div class="field mb-2">
+              <label>Bebida favorita do café da manhã</label>
+              <select class="select"><option>Espresso duplo</option><option>Cappuccino</option><option>Café coado</option><option>Chá verde</option><option>Não tomo café</option></select>
+            </div>
+
+            <div class="field">
+              <label>Bebidas alcoólicas?</label>
+              <div class="flex gap-1">
+                <label class="chip active"><input type="radio" name="alc" checked style="margin-right:6px;">Sim · ocasionalmente</label>
+                <label class="chip"><input type="radio" name="alc" style="margin-right:6px;">Sim · frequente</label>
+                <label class="chip"><input type="radio" name="alc" style="margin-right:6px;">Não</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- AMBIENTE -->
+          <div class="card card-body mb-3" style="padding:28px;">
+            <h3 class="h3 mb-2">Ambiente &amp; Conforto</h3>
+            <p class="small muted mb-3">Como a equipe pode acomodar você antes da sua chegada.</p>
+
+            <div class="field mb-2">
+              <label>Zona preferida</label>
+              <div class="flex gap-1" style="flex-wrap:wrap;">
+                <label class="chip"><input type="radio" name="zona" style="margin-right:6px;">Sala de leitura</label>
+                <label class="chip active"><input type="radio" name="zona" checked style="margin-right:6px;">Estação de trabalho</label>
+                <label class="chip"><input type="radio" name="zona" style="margin-right:6px;">Nap room</label>
+                <label class="chip"><input type="radio" name="zona" style="margin-right:6px;">Bar / lounge social</label>
+              </div>
+            </div>
+
+            <div class="field mb-2">
+              <label>Temperatura ideal</label>
+              <select class="select"><option>Frio (20–21°C)</option><option selected>Confortável (22–23°C)</option><option>Quente (24–25°C)</option></select>
+            </div>
+
+            <div class="field">
+              <label>Modo de atendimento</label>
+              <div class="flex gap-1">
+                <label class="chip"><input type="radio" name="att" style="margin-right:6px;">Proativo · venha me oferecer</label>
+                <label class="chip active"><input type="radio" name="att" checked style="margin-right:6px;">Reservado · chamarei se precisar</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMUNICAÇÃO -->
+          <div class="card card-body mb-3" style="padding:28px;">
+            <h3 class="h3 mb-2">Comunicação</h3>
+            <p class="small muted mb-3">Como queremos falar com você.</p>
+
+            <label class="flex gap-1 items-center mb-2" style="font-size:13px;"><input type="checkbox" checked> Saudação personalizada no QR check-in</label>
+            <label class="flex gap-1 items-center mb-2" style="font-size:13px;"><input type="checkbox" checked> Alerta de embarque 20 min antes do voo</label>
+            <label class="flex gap-1 items-center mb-2" style="font-size:13px;"><input type="checkbox"> Newsletter do Diário (quinzenal)</label>
+            <label class="flex gap-1 items-center" style="font-size:13px;"><input type="checkbox"> Notificações de novas salas e produtos</label>
+          </div>
+
+          <button class="btn btn-primary">Salvar preferências</button>
+        </form>
+      </main>
+
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+<div data-modal-mount></div>
+<script src="js/app.js"></script>
+</body>
+</html>

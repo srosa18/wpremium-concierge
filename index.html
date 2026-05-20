@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>W Premium · Concierge Digital — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/wireframe.css">
+</head>
+<body data-prefix="">
+
+<div data-nav></div>
+
+<!-- ============== HERO ============== -->
+<section class="container">
+  <div class="hero hero-tall">
+    <div class="ph"></div>
+    <div class="hero-overlay">
+      <div class="eyebrow" style="color:rgba(255,255,255,.8);">Concierge Digital</div>
+      <h1 class="h1 mt-1" style="max-width:640px;">Descubra suas Salas.</h1>
+      <p class="lead mt-2" style="max-width:520px;">Repouso, trabalho e celebração. Onde você é sempre recebido.</p>
+      <div class="mt-3 flex gap-1">
+        <a href="salas.html" class="btn btn-secondary">Explorar Salas</a>
+        <button class="btn btn-ghost" data-open-verifier style="color:#fff;">Você é elegível? →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BUSCA POR AEROPORTO ============== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header text-center" style="max-width:680px;margin:0 auto 32px;">
+      <div class="eyebrow">Discovery · Entry Point</div>
+      <h2 class="h2 mt-1">Qual é o seu aeroporto?</h2>
+      <p>21+ salas em 14 aeroportos brasileiros e argentinos. Comece pela cidade ou pelo código IATA.</p>
+    </div>
+
+    <div class="search-wrap" style="max-width:640px;margin:0 auto;">
+      <div class="search-bar">
+        <input id="airport-search" type="text" placeholder="Digite IATA (GRU, REC, FOR…) ou cidade" autocomplete="off">
+        <a href="salas.html" class="btn btn-primary">Buscar</a>
+      </div>
+      <div id="airport-suggest" class="suggest-box"></div>
+    </div>
+
+    <div class="mt-3 flex gap-1 items-center" style="justify-content:center;flex-wrap:wrap;">
+      <span class="small">Sugestões:</span>
+      <a href="aeroporto-gru.html" class="chip">Guarulhos · GRU</a>
+      <a href="aeroporto-rec.html" class="chip">Recife · REC</a>
+      <a href="aeroporto-for.html" class="chip">Fortaleza · FOR</a>
+      <a href="aeroporto-gig.html" class="chip">Galeão · GIG</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEATURED ROOMS ============== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="sec-header-row">
+      <div class="sec-header" style="margin:0;">
+        <div class="eyebrow">Produtos âncora</div>
+        <h2 class="h2 mt-1">Salas em destaque</h2>
+        <p>Cada sala é um produto editorial. Não um item de menu.</p>
+      </div>
+      <a href="salas.html" class="btn-link">Ver Todas →</a>
+    </div>
+
+    <div class="grid grid-4">
+      <article class="card sala-card">
+        <div class="ph" style="aspect-ratio:4/3;"><span class="ph-tag">Premium</span></div>
+        <div class="card-body">
+          <h3 class="sala-title">5th Avenue</h3>
+          <p class="sala-meta">São Paulo · Terminal 3 · GRU</p>
+          <p class="sala-line">Repouso de luxo em movimento.</p>
+          <a href="sala-5th-avenue.html" class="btn-link">Explorar →</a>
+        </div>
+      </article>
+
+      <article class="card sala-card">
+        <div class="ph" style="aspect-ratio:4/3;"><span class="ph-tag">Premium</span></div>
+        <div class="card-body">
+          <h3 class="sala-title">Frevo</h3>
+          <p class="sala-meta">Recife · Internacional · REC</p>
+          <p class="sala-line">A cidade entra na sala — e fica.</p>
+          <a href="sala-frevo.html" class="btn-link">Explorar →</a>
+        </div>
+      </article>
+
+      <article class="card sala-card">
+        <div class="ph" style="aspect-ratio:4/3;"></div>
+        <div class="card-body">
+          <h3 class="sala-title">Green Park</h3>
+          <p class="sala-meta">São Paulo · Terminal 2 · GRU</p>
+          <p class="sala-line">Onde o doméstico encontra silêncio.</p>
+          <a href="sala-5th-avenue.html" class="btn-link">Explorar →</a>
+        </div>
+      </article>
+
+      <article class="card sala-card">
+        <div class="ph" style="aspect-ratio:4/3;"></div>
+        <div class="card-body">
+          <h3 class="sala-title">Ocean View</h3>
+          <p class="sala-meta">Recife · Desembarque · REC</p>
+          <p class="sala-line">Para quem chega antes do mar.</p>
+          <a href="sala-frevo.html" class="btn-link">Explorar →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== KILLER FEATURE · VERIFICADOR ============== -->
+<section class="section">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="ph" style="aspect-ratio:5/4;"></div>
+      <div>
+        <div class="eyebrow">Killer Feature</div>
+        <h2 class="h2 mt-1">Você tem acesso?</h2>
+        <p class="lead mt-2">Insira seu cartão. Em segundos, descubra quais salas você tem direito hoje, por qual programa, com quais condições.</p>
+        <p class="small muted mt-2">Nenhum concorrente no Brasil tem isso. Consultivo, instantâneo, sem armazenamento de dados.</p>
+        <div class="mt-3 flex gap-1">
+          <button class="btn btn-primary" data-open-verifier>Verificar agora</button>
+          <a href="como-acessar.html" class="btn btn-secondary">Ver Formas de Acesso</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SERVIÇOS ============== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="sec-header">
+      <div class="eyebrow">Serviços</div>
+      <h2 class="h2 mt-1">Além da sala</h2>
+      <p>Quatro produtos que complementam sua jornada — antes, durante e depois do voo.</p>
+    </div>
+    <div class="grid grid-4">
+      <a href="airport-rooms.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="badge mb-2">Produto</div>
+        <h3 class="h3">Airport Rooms</h3>
+        <p class="small muted mt-1">Suítes premium para quem precisa de mais que um descanso.</p>
+        <span class="btn-link mt-3">Conhecer →</span>
+      </a>
+      <a href="w-fast-pass.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="badge mb-2">Serviço</div>
+        <h3 class="h3">W Fast Pass</h3>
+        <p class="small muted mt-1">Embarque acelerado em parceria com companhias aéreas.</p>
+        <span class="btn-link mt-3">Conhecer →</span>
+      </a>
+      <a href="meet-assist.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="badge mb-2">Serviço</div>
+        <h3 class="h3">W Meet &amp; Assist</h3>
+        <p class="small muted mt-1">Acompanhamento personalizado dentro do aeroporto.</p>
+        <span class="btn-link mt-3">Conhecer →</span>
+      </a>
+      <a href="arrival-services.html" class="card card-body" style="text-decoration:none;color:inherit;">
+        <div class="badge mb-2">Serviço</div>
+        <h3 class="h3">Arrival Services</h3>
+        <p class="small muted mt-1">Receptivo, transfer e concierge para sua chegada.</p>
+        <span class="btn-link mt-3">Conhecer →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== EDITORIAL ============== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header-row mb-4">
+      <div class="sec-header" style="margin:0;">
+        <div class="eyebrow">Editorial · Diário</div>
+        <h2 class="h2 mt-1">Histórias da Jornada</h2>
+        <p>Long-form curatorial sobre viagem, gastronomia, ritual e cidade.</p>
+      </div>
+      <a href="editorial.html" class="btn-link">Ver Diário →</a>
+    </div>
+
+    <article class="article-feature">
+      <div class="ph"></div>
+      <div>
+        <div class="article-meta">Long-form · Tendências · Maio 2026</div>
+        <h2>O Futuro do Repouso: Tecnologia e Humanidade em Salas Premium</h2>
+        <p>Como IA e design humanizado estão transformando espaços de repouso em aeroportos — uma entrevista com os arquitetos do 5th Avenue.</p>
+        <a href="artigo.html" class="btn-link">Ler Artigo →</a>
+      </div>
+    </article>
+
+    <div class="grid grid-3 mt-5">
+      <article class="card article-card"><div class="ph"></div><div class="card-body"><div class="article-meta">Gastronomia · Abril 2026</div><h4>Gastronomia em voo: F&amp;B em salas</h4><a href="artigo.html" class="btn-link">Ler →</a></div></article>
+      <article class="card article-card"><div class="ph"></div><div class="card-body"><div class="article-meta">Destinos · Março 2026</div><h4>Recife em 24h entre conexões</h4><a href="artigo.html" class="btn-link">Ler →</a></div></article>
+      <article class="card article-card"><div class="ph"></div><div class="card-body"><div class="article-meta">Wellness · Fevereiro 2026</div><h4>Wellness Travel: descansar é trabalhar</h4><a href="artigo.html" class="btn-link">Ler →</a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== B2B CALLOUT ============== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <div class="eyebrow">B2B</div>
+        <h2 class="h2 mt-1">Empresas, agências e operadoras</h2>
+        <p class="lead mt-2">Reservas de grupo, parcerias com TMC's e programas customizados. Soluções para quem move equipes e clientes premium.</p>
+        <div class="mt-3 flex gap-1">
+          <a href="b2b.html" class="btn btn-primary">Soluções B2B</a>
+          <a href="reservas-grupo.html" class="btn btn-secondary">Reservas de Grupo</a>
+        </div>
+      </div>
+      <div class="ph" style="aspect-ratio:4/3;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== NEWSLETTER ============== -->
+<section class="section">
+  <div class="container">
+    <div class="newsletter">
+      <div>
+        <div class="eyebrow" style="color:rgba(255,255,255,.6);">Convite, não pressão</div>
+        <h3>Receba o Diário no seu email</h3>
+        <p>Histórias, dicas e novidades das nossas salas. Quinzenal, sem ruído.</p>
+      </div>
+      <form data-form-demo data-form-msg="Obrigado. Você receberá a próxima edição.">
+        <div class="input-group">
+          <input class="input" type="email" placeholder="seu@email.com" required>
+          <button class="btn btn-primary" type="submit">Inscrever-se</button>
+        </div>
+        <p class="tiny mt-2" style="color:rgba(255,255,255,.5);">Respeitamos sua privacidade · LGPD compliant.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+<div data-modal-mount></div>
+<script src="js/app.js"></script>
+</body>
+</html>

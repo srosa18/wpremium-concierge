@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Avaliação · In-Lounge · W Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/wireframe.css">
+</head>
+<body style="background:var(--g200);">
+
+<div class="wf-banner">Wireframe Mode · 02e Avaliação · 375px</div>
+
+<div style="max-width:980px;margin:0 auto;padding:24px 20px;">
+  <div class="flex items-center justify-between mb-3">
+    <div>
+      <div class="eyebrow">In-Lounge Mobile · 02e</div>
+      <h1 class="h3 mt-1">Feedback / Avaliação</h1>
+    </div>
+    <div class="flex gap-1" style="flex-wrap:wrap;">
+      <a href="welcome.html" class="chip">Welcome</a>
+      <a href="cardapio.html" class="chip">Cardápio</a>
+      <a href="servico.html" class="chip">Serviço</a>
+      <a href="voo.html" class="chip">Voo</a>
+      <a href="avaliacao.html" class="chip active">Avaliação</a>
+    </div>
+  </div>
+
+  <div class="mobile-stage">
+    <div class="mob-bar">09:41 · The Pier</div>
+
+    <div class="mob-content">
+      <h2 style="font-size:22px;font-weight:700;margin:0 0 6px;">Avalie Sua Experiência</h2>
+      <p style="font-size:12px;color:var(--g600);margin:0 0 16px;">Sua opinião nos ajuda a cuidar melhor de você.</p>
+
+      <div style="font-size:12px;font-weight:600;color:var(--g700);letter-spacing:.04em;text-transform:uppercase;text-align:center;margin-top:8px;">Como foi sua visita hoje?</div>
+
+      <div class="star-row" data-star-row>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+
+      <div class="mt-3">
+        <div style="font-size:11px;font-weight:600;color:var(--g700);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;">O que merece destaque?</div>
+        <div class="flex gap-1" style="flex-wrap:wrap;">
+          <button class="chip">Atendimento</button>
+          <button class="chip">F&amp;B</button>
+          <button class="chip">Limpeza</button>
+          <button class="chip">Wi-Fi</button>
+          <button class="chip">Silêncio</button>
+          <button class="chip">Conforto</button>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div style="font-size:11px;font-weight:600;color:var(--g700);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;">Comentários</div>
+        <textarea class="textarea" placeholder="Compartilhe sua experiência"></textarea>
+      </div>
+
+      <form data-form-demo data-form-msg="Obrigado pela visita. Sua opinião ajuda a gente a cuidar melhor de você." class="mt-3">
+        <button class="btn btn-primary btn-block">Enviar Avaliação</button>
+      </form>
+
+      <p class="tiny muted text-center mt-2">Anônimo · não compartilhamos seus comentários com a equipe local sem permissão.</p>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
