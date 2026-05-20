@@ -61,8 +61,8 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
 
 /* ---------- LAYOUT ---------- */
 .container{max-width:1360px;margin:0 auto;padding:0 40px;}
-.section{padding:64px 0;}
-.section-tight{padding:40px 0;}
+.section{padding:80px 0;}
+.section-tight{padding:56px 0;}
 .section-alt{background:var(--g100);}
 
 /* ---------- TYPE ---------- */
@@ -239,7 +239,7 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
   height:560px;
   border-radius:var(--r-lg);
   overflow:hidden;
-  margin-top:24px;
+  margin-top:32px;
 }
 .hero .ph{height:100%;border-radius:var(--r-lg);}
 .hero-overlay{
@@ -256,18 +256,25 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
 .hero-short{height:400px;}
 
 /* ---------- SECTION HEADER ----------
-   Pattern de "dobra de conteúdo" — sempre múltiplos de 8:
-   [eyebrow] (mb 8)
-   [h1/h2/h3] (mb 8)
-   [subtítulo p] (mb 32 até o conteúdo da seção)
+   Pattern de "dobra de conteúdo" · Quiet Luxury:
+   Respiros pequenos dentro do bloco do header (tight):
+     [eyebrow] (mb 8)
+     [h1/h2/h3] (mb 8)
+     [subtítulo p] (margin 0)
+   Respiro grande até o conteúdo da seção (breathing):
+     [margin-bottom: 48] do bloco header todo
 */
-.sec-header{margin-bottom:32px;}
+.sec-header{margin-bottom:48px;}
 .sec-header .eyebrow{margin-bottom:8px;}
 .sec-header .h1,
 .sec-header .h2,
 .sec-header .h3{margin:0 0 8px;}
 .sec-header p{margin:0;color:var(--g600);font-size:14px;line-height:1.5;}
-.sec-header-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.sec-header-row{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  margin-bottom:48px;
+}
 .sec-header-row .sec-header{margin-bottom:0;}
 
 /* ---------- SALA CARD ---------- */
@@ -427,7 +434,7 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
 
 /* ---------- BREADCRUMB ---------- */
 .crumb{
-  font-size:11px;color:var(--g600);letter-spacing:.06em;text-transform:uppercase;padding:24px 0;
+  font-size:11px;color:var(--g600);letter-spacing:.06em;text-transform:uppercase;padding:32px 0;
   display:flex;align-items:center;gap:0;flex-wrap:wrap;
 }
 .crumb a{color:var(--g600);}
@@ -468,7 +475,7 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
 .article-card h4{font-size:15px;font-weight:600;line-height:1.4;margin:0 0 8px;}
 .article-card p{font-size:12px;color:var(--g700);margin:0 0 16px;line-height:1.5;}
 
-.article-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center;margin-bottom:48px;}
+.article-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center;margin-bottom:64px;}
 .article-feature .ph{aspect-ratio:4/3;}
 .article-feature h2{font-size:28px;font-weight:700;line-height:1.2;margin:8px 0 16px;}
 .article-feature p{font-size:14px;color:var(--g700);margin:0 0 24px;line-height:1.6;}
@@ -776,9 +783,10 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
   .hero-overlay .lead{font-size:14px;}
   .hero-overlay .h1{margin-top:8px;}
 
-  .section{padding:40px 0;}
-  .section-tight{padding:24px 0;}
-  .sec-header-row{flex-direction:column;align-items:flex-start;}
+  .section{padding:56px 0;}
+  .section-tight{padding:40px 0;}
+  .sec-header{margin-bottom:32px;}
+  .sec-header-row{flex-direction:column;align-items:flex-start;margin-bottom:32px;}
 
   /* Grids → 1 col */
   .grid-4,.grid-3,.grid-2,.ficha,.amenidades,.stats,.timeline,.press-row,.footer-grid,.pricing,.gallery{grid-template-columns:1fr;}
