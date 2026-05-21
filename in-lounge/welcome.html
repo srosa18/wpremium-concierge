@@ -69,5 +69,26 @@
 
 <script src="../js/app.js"></script>
 <script src="../js/feedback.js"></script>
+<script>
+/* Banner de sucesso após envio da avaliação · ?avaliacao=ok */
+(function(){
+  if (location.search.indexOf('avaliacao=ok') < 0) return;
+  document.addEventListener('DOMContentLoaded', function(){
+    var content = document.querySelector('.mob-content');
+    if (!content) return;
+    var banner = document.createElement('div');
+    banner.style.cssText = 'background:#EAF3EE;border-left:3px solid #4a9d6f;color:#2E6B4A;padding:14px 16px;border-radius:0 8px 8px 0;font-size:13px;line-height:1.5;margin:0 0 20px;transition:opacity .4s ease;';
+    banner.innerHTML = '<strong>✓ Obrigado pela visita.</strong> Sua opinião foi registrada e ajuda a gente a cuidar melhor de você.';
+    content.insertBefore(banner, content.firstChild);
+    // limpa query string pra refresh não disparar de novo
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+    // auto-some em 7s
+    setTimeout(function(){
+      banner.style.opacity = '0';
+      setTimeout(function(){ banner.remove(); }, 400);
+    }, 7000);
+  });
+})();
+</script>
 </body>
 </html>

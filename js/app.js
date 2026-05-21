@@ -349,6 +349,7 @@
       if(!f) return;
       e.preventDefault();
       var msg = f.getAttribute('data-form-msg') || 'Obrigado. Recebemos sua mensagem.';
+      var redirect = f.getAttribute('data-form-redirect');
       if(!f.querySelector('.note.demo-feedback')){
         var feedback = document.createElement('div');
         feedback.className = 'note demo-feedback';
@@ -357,6 +358,9 @@
         f.appendChild(feedback);
       }
       f.querySelectorAll('input,textarea').forEach(function(i){ if(i.type !== 'submit') i.value=''; });
+      if(redirect){
+        setTimeout(function(){ location.href = redirect; }, 1500);
+      }
     });
   }
 
