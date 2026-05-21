@@ -1,4 +1,4 @@
-# W Premium · Concierge Digital — Wireframe
+﻿# W Premium · Concierge Digital — Wireframe
 
 Protótipo navegável (HTML/CSS/JS) do **Concierge Digital W Premium**, alinhado ao **Sitemap V1 da Fase 03 (Abril/2026)**.
 
@@ -30,7 +30,7 @@ L2  Serviços
     └─ Arrival Services
 
 L2  Como Acessar
-    ├─ Verificador (MODAL global · killer feature)
+    ├─ Verificador (MODAL global · W Premium Verify)
     └─ Formas de Acesso (cartões · Day Pass · programas)
 
 L2  Editorial
@@ -73,7 +73,7 @@ Abra `index.html` no navegador — ou use o link do GitHub Pages.
 ### Fluxos para testar
 
 1. **Discovery → Landing:** Home → busca aeroporto (GRU) → Hub GRU → 5th Avenue (12 blocos)
-2. **Killer Feature:** clique "Verificar Acesso" em qualquer página (modal global)
+2. **W Premium Verify:** clique "Verificar Acesso" em qualquer página (modal global)
 3. **Conta do Hóspede:** Login → Dashboard → navegação autenticada
 4. **In-Lounge:** abra `in-lounge/welcome.html` (mobile, simula QR check-in)
 5. **B2B:** B2B → Reservas de Grupo (formulário) ou Parcerias Operadoras

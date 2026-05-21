@@ -1,4 +1,4 @@
-/* W Premium Wireframe — global components & interactions (Fase 03) */
+﻿/* W Premium Wireframe — global components & interactions (Fase 03) */
 (function(){
   'use strict';
 
@@ -125,7 +125,7 @@
       '  <div class="modal" role="dialog" aria-label="Verificador de Acesso" aria-modal="true" data-comment-id="modal.verificador" data-comment-label="Modal · Verificador de Acesso">'+
       '    <button class="modal-close" data-modal-close aria-label="Fechar">×</button>'+
       '    <div class="modal-body">'+
-      '      <div class="eyebrow">Killer Feature · Modal</div>'+
+      '      <div class="eyebrow">W Premium Verify · Modal</div>'+
       '      <h2 class="h2 mt-1">Você é Elegível?</h2>'+
       '      <p class="muted mt-1" style="font-size:13px;">Insira o BIN do seu cartão e descubra, em tempo real, quais salas você tem direito hoje — sem precisar sair desta página.</p>'+
       '      <form id="verif-form" class="mt-3">'+

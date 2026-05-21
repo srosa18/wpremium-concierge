@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    W PREMIUM CONCIERGE DIGITAL — WIREFRAME MODE
    Estética: greyscale, low-fi, navegável
    ============================================ */
@@ -832,7 +832,7 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
     grid-template-columns:1fr !important;
   }
 
-  /* Callouts centralizam no tablet + mobile (Killer Feature, B2B, etc) */
+  /* Callouts centralizam no tablet + mobile (W Premium Verify, B2B, etc) */
   .center-mobile{text-align:center;}
   .center-mobile .flex{justify-content:center;}
   .center-mobile ul,
