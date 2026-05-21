@@ -20,8 +20,8 @@
   // ====================================================
   // CONFIG · troque pelos valores do seu projeto Supabase
   // ====================================================
-  var SUPABASE_URL = 'CHANGE_ME_PROJECT_URL';   // ex: https://abc123.supabase.co
-  var SUPABASE_ANON_KEY = 'CHANGE_ME_ANON_KEY'; // chave pública (anon/public)
+  var SUPABASE_URL = 'https://itwaxivhuxtnatjuoebe.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_ZaeXpY-CMCeKEiFBptBxyg_7SxsMUI-';
   var TABLE = 'comments';
 
   // Se quiser desligar o widget temporariamente:

@@ -16,9 +16,9 @@
   // ====================================================
   // CONFIG
   // ====================================================
-  var SUPABASE_URL      = 'CHANGE_ME_PROJECT_URL';
-  var SUPABASE_ANON_KEY = 'CHANGE_ME_ANON_KEY';
-  var ADMIN_PASSWORD    = 'wpremium2026';  // troque por uma senha forte
+  var SUPABASE_URL      = 'https://itwaxivhuxtnatjuoebe.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_ZaeXpY-CMCeKEiFBptBxyg_7SxsMUI-';
+  var ADMIN_PASSWORD    = 'wpremium2026';
   var TABLE             = 'comments';
 
   var configured = SUPABASE_URL.indexOf('CHANGE_ME') !== 0 && SUPABASE_ANON_KEY.indexOf('CHANGE_ME') !== 0;
