@@ -49,6 +49,13 @@
 @media (max-width:640px){
   [data-comment-id]:not(section) > .fb-pin{ right:12px; top:12px; }
 }
+
+/* Exceção: <footer> ocupa viewport-wide igual section, então pin usa gutter
+   pra alinhar com a borda direita do container interno (max 1360px) */
+footer[data-comment-id] > .fb-pin{
+  right:calc(var(--fb-gutter) + 8px);
+  top:24px;
+}
 .fb-pin:hover{
   background:var(--accent);
   transform:scale(1.08);

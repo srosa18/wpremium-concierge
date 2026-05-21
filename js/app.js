@@ -45,7 +45,7 @@
   function footerHTML(prefix){
     prefix = prefix || '';
     return ''+
-      '<footer class="footer">'+
+      '<footer class="footer" data-comment-id="global.footer" data-comment-label="Footer global">'+
       '  <div class="container">'+
       '    <div class="footer-grid">'+
       '      <div>'+
@@ -122,7 +122,7 @@
     prefix = prefix || '';
     return ''+
       '<div class="modal-backdrop" data-modal-backdrop hidden>'+
-      '  <div class="modal" role="dialog" aria-label="Verificador de Acesso" aria-modal="true">'+
+      '  <div class="modal" role="dialog" aria-label="Verificador de Acesso" aria-modal="true" data-comment-id="modal.verificador" data-comment-label="Modal · Verificador de Acesso">'+
       '    <button class="modal-close" data-modal-close aria-label="Fechar">×</button>'+
       '    <div class="modal-body">'+
       '      <div class="eyebrow">Killer Feature · Modal</div>'+
