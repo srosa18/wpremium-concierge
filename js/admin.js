@@ -71,6 +71,44 @@
     t._tid = setTimeout(function(){ t.classList.remove('show'); }, 2600);
   }
 
+  /* Modal de confirmação custom · substitui o confirm() nativo do browser */
+  function confirmModal(opts){
+    return new Promise(function(resolve){
+      var bd = el('div', { 'class':'adm-confirm-backdrop' });
+      bd.innerHTML = ''+
+        '<div class="adm-confirm" role="dialog" aria-modal="true">'+
+        '  <h3 class="adm-confirm-title">'+escapeHtml(opts.title || 'Confirmar ação')+'</h3>'+
+        '  <p class="adm-confirm-msg">'+escapeHtml(opts.msg || '')+'</p>'+
+        '  <div class="adm-confirm-actions">'+
+        '    <button class="adm-btn" data-act="cancel">'+escapeHtml(opts.cancelLabel || 'Cancelar')+'</button>'+
+        '    <button class="adm-btn '+(opts.danger ? 'adm-btn-danger' : 'adm-btn-primary')+'" data-act="confirm">'+escapeHtml(opts.confirmLabel || 'Confirmar')+'</button>'+
+        '  </div>'+
+        '</div>';
+      function close(result){
+        bd.remove();
+        document.removeEventListener('keydown', onKey);
+        resolve(result);
+      }
+      function onKey(e){
+        if (e.key === 'Escape') close(false);
+        else if (e.key === 'Enter') close(true);
+      }
+      bd.addEventListener('click', function(e){
+        if (e.target === bd) return close(false);
+        var btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        close(btn.getAttribute('data-act') === 'confirm');
+      });
+      document.addEventListener('keydown', onKey);
+      document.body.appendChild(bd);
+      // foco no botão de confirmação
+      setTimeout(function(){
+        var b = bd.querySelector('button[data-act="confirm"]');
+        if (b) b.focus();
+      }, 50);
+    });
+  }
+
   // ====================================================
   // SUPABASE REST
   // ====================================================
@@ -544,11 +582,22 @@
   }
 
   function deleteComment(id){
-    if (!confirm('Excluir este comentário definitivamente?')) return;
-    sbDelete(id).then(function(){
-      toast('Comentário excluído.');
-      loadData();
-    }).catch(function(){ toast('Erro ao excluir.'); });
+    confirmModal({
+      title: 'Excluir comentário?',
+      msg: 'Esta ação não pode ser desfeita. O comentário será removido definitivamente do banco.',
+      confirmLabel: 'Excluir',
+      cancelLabel: 'Cancelar',
+      danger: true
+    }).then(function(ok){
+      if (!ok) return;
+      sbDelete(id).then(function(){
+        toast('Comentário excluído.');
+        loadData();
+      }).catch(function(err){
+        toast('Erro ao excluir · verifique a policy de DELETE no Supabase.');
+        console.error('[admin] delete failed:', err);
+      });
+    });
   }
 
   function statusLabel(s){

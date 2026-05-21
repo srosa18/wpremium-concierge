@@ -233,6 +233,46 @@ body{background:var(--g100);}
 }
 .adm-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+/* ---------- CONFIRM MODAL ---------- */
+.adm-confirm-backdrop{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(26,26,24,.55);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  animation:adm-fade .18s ease;
+}
+@keyframes adm-fade{from{opacity:0;}to{opacity:1;}}
+
+.adm-confirm{
+  background:var(--white);
+  border-radius:var(--r-xl);
+  width:100%;max-width:440px;
+  padding:32px;
+  box-shadow:0 24px 64px rgba(0,0,0,.25);
+  animation:adm-pop .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes adm-pop{from{transform:scale(.94);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+.adm-confirm-title{
+  font-size:17px;font-weight:600;color:var(--g900);
+  margin:0 0 8px;line-height:1.3;
+  letter-spacing:-.005em;
+}
+.adm-confirm-msg{
+  font-size:13px;color:var(--g700);line-height:1.55;
+  margin:0 0 24px;
+}
+.adm-confirm-actions{
+  display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;
+}
+.adm-confirm-actions .adm-btn{height:40px;font-size:12px;padding:0 18px;}
+.adm-confirm-actions .adm-btn-danger{
+  background:var(--g900);color:#fff;border-color:var(--g900);
+}
+.adm-confirm-actions .adm-btn-danger:hover{
+  background:#c1594a;border-color:#c1594a;color:#fff;
+}
+
 /* ---------- INLINE REPLY EDITOR ---------- */
 .adm-reply-editor{
   margin-top:12px;padding:12px;background:var(--g100);border-radius:var(--r-md);

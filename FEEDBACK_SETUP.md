@@ -91,6 +91,11 @@ create policy "Anyone can read" on comments
 create policy "Anyone can update" on comments
   for update to anon, authenticated using (true) with check (true);
 
+-- Qualquer um pode deletar (necessário pro admin excluir comentários)
+-- ⚠ Em produção, troque por policy autenticada com role admin
+create policy "Anyone can delete" on comments
+  for delete to anon, authenticated using (true);
+
 -- ============================================
 -- VIEWS · consolidações prontas
 -- ============================================
