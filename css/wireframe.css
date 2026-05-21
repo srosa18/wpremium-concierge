@@ -248,9 +248,17 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
   background:linear-gradient(to top, rgba(26,26,24,.6) 0%, rgba(26,26,24,0) 100%);
   color:var(--white);
 }
-.hero-overlay .h1,.hero-overlay .h2{color:var(--white);}
-.hero-overlay .lead{color:rgba(255,255,255,.85);}
-.hero-overlay .small{color:rgba(255,255,255,.75);}
+.hero-overlay-top{
+  position:absolute;left:0;right:0;top:0;
+  padding:40px;
+  background:linear-gradient(to bottom, rgba(26,26,24,.5) 0%, rgba(26,26,24,0) 100%);
+  color:var(--white);
+}
+.hero-overlay .h1,.hero-overlay .h2,
+.hero-overlay-top .h1,.hero-overlay-top .h2{color:var(--white);}
+.hero-overlay .lead,.hero-overlay-top .lead{color:rgba(255,255,255,.85);}
+.hero-overlay .small,.hero-overlay-top .small{color:rgba(255,255,255,.75);}
+.hero-overlay-top .eyebrow{color:rgba(255,255,255,.8);}
 
 .hero-tall{height:600px;}
 .hero-short{height:400px;}
@@ -796,9 +804,9 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
 
   /* Hero · all variants reset to mobile height */
   .hero,.hero-tall,.hero-short{height:340px;margin-top:16px;}
-  .hero-overlay{padding:24px 20px;}
-  .hero-overlay .lead{font-size:14px;}
-  .hero-overlay .h1{margin-top:8px;}
+  .hero-overlay,.hero-overlay-top{padding:24px 20px;}
+  .hero-overlay .lead,.hero-overlay-top .lead{font-size:14px;}
+  .hero-overlay .h1,.hero-overlay-top .h1{margin-top:8px;}
 
   .section{padding:56px 0;}
   .section-tight{padding:40px 0;}
