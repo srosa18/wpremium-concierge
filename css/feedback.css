@@ -1,0 +1,200 @@
+/* ============================================
+   FEEDBACK WIDGET · MVP
+   Balões "+" em cada dobra · modal · lista
+   ============================================ */
+
+/* Marca elementos commentáveis */
+[data-comment-id]{
+  position:relative;
+}
+
+/* Botão balão "+" */
+.fb-pin{
+  position:absolute;
+  top:8px;right:8px;
+  z-index:40;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);
+  border:1px solid var(--border-strong);
+  border-radius:var(--r-pill);
+  font-size:13px;font-weight:500;color:var(--g700);
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+  transition:all .15s ease;
+  font-family:var(--ff);
+  line-height:1;
+}
+.fb-pin:hover{
+  background:var(--g900);color:#fff;border-color:var(--g900);
+  transform:scale(1.04);
+}
+.fb-pin .fb-count{
+  position:absolute;top:-6px;right:-6px;
+  min-width:18px;height:18px;padding:0 5px;
+  background:var(--accent);color:#fff;
+  border-radius:var(--r-pill);
+  font-size:10px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  line-height:1;
+}
+.fb-pin .fb-count[hidden]{display:none;}
+
+/* Highlight quando passa o mouse no elemento commentável */
+[data-comment-id]:hover > .fb-pin{
+  background:var(--g900);color:#fff;border-color:var(--g900);
+}
+
+/* Modal backdrop */
+.fb-modal-backdrop{
+  position:fixed;inset:0;z-index:250;
+  background:rgba(26,26,24,.5);
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:0;
+  animation:fb-fade .2s ease;
+}
+@keyframes fb-fade{from{opacity:0;}to{opacity:1;}}
+.fb-modal-backdrop[hidden]{display:none;}
+
+.fb-modal{
+  background:var(--white);
+  border-radius:24px 24px 0 0;
+  width:100%;max-width:560px;
+  max-height:90vh;overflow:auto;
+  padding:32px 24px 24px;
+  position:relative;
+  animation:fb-slide .22s ease;
+  box-shadow:0 -10px 40px rgba(0,0,0,.15);
+}
+@keyframes fb-slide{from{transform:translateY(20px);}to{transform:translateY(0);}}
+
+@media (min-width:768px){
+  .fb-modal-backdrop{align-items:center;padding:24px;}
+  .fb-modal{border-radius:16px;padding:32px;}
+}
+
+.fb-modal-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:16px;margin-bottom:8px;
+}
+.fb-modal-title{
+  font-size:16px;font-weight:600;color:var(--g900);
+  margin:0;line-height:1.3;
+}
+.fb-modal-sub{
+  font-size:11px;color:var(--g600);
+  letter-spacing:.06em;text-transform:uppercase;
+  margin:0 0 16px;
+}
+.fb-modal-close{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--g100);color:var(--g700);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;line-height:1;flex-shrink:0;
+  cursor:pointer;border:none;
+}
+.fb-modal-close:hover{background:var(--g200);}
+
+.fb-modal-divider{height:1px;background:var(--border);margin:16px 0;}
+
+/* Lista de comentários existentes */
+.fb-comments{
+  display:flex;flex-direction:column;gap:12px;
+  margin-bottom:16px;
+  max-height:240px;overflow-y:auto;
+}
+.fb-comment{
+  background:var(--g100);
+  border-radius:12px;padding:12px 16px;
+  font-size:13px;color:var(--g800);line-height:1.5;
+}
+.fb-comment-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:10px;color:var(--g600);
+  letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.fb-comment-meta strong{color:var(--g900);font-weight:600;}
+.fb-comment-empty{
+  text-align:center;color:var(--g600);
+  font-size:12px;padding:16px 0;font-style:italic;
+}
+
+/* Form */
+.fb-form{display:flex;flex-direction:column;gap:12px;}
+.fb-field{display:flex;flex-direction:column;gap:6px;}
+.fb-field label{
+  font-size:10px;font-weight:600;color:var(--g700);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.fb-input,.fb-textarea{
+  width:100%;border:1px solid var(--border-strong);
+  border-radius:8px;padding:12px 16px;
+  font-size:14px;color:var(--g900);font-family:var(--ff);
+  background:var(--white);
+}
+.fb-textarea{min-height:96px;resize:vertical;line-height:1.5;}
+.fb-input:focus,.fb-textarea:focus{
+  outline:none;border-color:var(--g900);
+}
+
+.fb-actions{
+  display:flex;gap:8px;justify-content:flex-end;
+  margin-top:8px;flex-wrap:wrap;
+}
+.fb-btn{
+  height:44px;padding:0 20px;
+  border-radius:var(--r-pill);
+  font-size:12px;font-weight:500;letter-spacing:.06em;
+  cursor:pointer;border:none;font-family:var(--ff);
+  display:inline-flex;align-items:center;gap:6px;
+  transition:all .15s ease;
+}
+.fb-btn-primary{background:var(--g900);color:#fff;}
+.fb-btn-primary:hover{opacity:.88;}
+.fb-btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+.fb-btn-secondary{background:var(--white);color:var(--g900);border:1px solid var(--border-strong);}
+.fb-btn-secondary:hover{background:var(--g100);}
+
+/* Status messages */
+.fb-status{
+  font-size:12px;padding:8px 12px;border-radius:8px;
+  margin-top:8px;line-height:1.4;
+}
+.fb-status-ok{background:#EAF3EE;color:#2E6B4A;border:1px solid #BFD8C9;}
+.fb-status-err{background:#FAEAE7;color:#8A3326;border:1px solid #E0B7AF;}
+.fb-status-loading{background:var(--g100);color:var(--g700);}
+
+/* Banner de status no topo da página */
+.fb-banner{
+  position:fixed;bottom:16px;right:16px;z-index:60;
+  background:var(--white);
+  border:1px solid var(--border-strong);
+  border-radius:var(--r-pill);
+  padding:10px 16px;
+  font-size:11px;color:var(--g800);
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+  font-family:var(--ff);
+}
+.fb-banner .fb-banner-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+}
+.fb-banner .fb-banner-dot.is-offline{background:var(--g400);}
+.fb-banner button{
+  background:none;border:none;color:var(--g700);
+  cursor:pointer;font-size:11px;
+  text-decoration:underline;padding:0;
+  font-family:inherit;
+}
+
+/* Disable button on mobile cramped */
+@media (max-width:640px){
+  .fb-pin{width:32px;height:32px;font-size:14px;top:8px;right:8px;}
+  .fb-banner{font-size:10px;padding:8px 12px;bottom:12px;right:12px;}
+}
+
+/* Hide widget completely if user wants — usado quando tirar screenshot pro cliente final */
+body.fb-off .fb-pin,
+body.fb-off .fb-banner{display:none !important;}
