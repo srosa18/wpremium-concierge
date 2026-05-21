@@ -260,9 +260,13 @@
 
   function submitComment(commentId, form){
     var data = new FormData(form);
+    // Captura label legível do elemento commentável (para dashboard)
+    var node = document.querySelector('[data-comment-id="'+commentId+'"]');
+    var label = node ? (node.getAttribute('data-comment-label') || commentId) : commentId;
     var payload = {
       page: pageKey(),
       element_id: commentId,
+      element_label: label,
       author_name: (data.get('name')||'').trim(),
       author_email: (data.get('email')||'').trim() || null,
       body: (data.get('body')||'').trim()

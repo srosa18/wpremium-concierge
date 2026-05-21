@@ -1,97 +1,202 @@
-# Feedback Widget · Setup (Supabase)
+# Feedback Widget · Setup (Supabase + Admin Dashboard)
 
-5 passos para ativar o widget de comentários do cliente. Tempo: ~5 minutos.
+Configura o backend Supabase para receber comentários do wireframe e ativar
+o painel administrativo (`/admin.html`).
+
+**Tempo total:** ~10 minutos.
 
 ---
 
 ## 1. Criar projeto Supabase (grátis)
 
-1. Acesse https://supabase.com e faça login (Google, GitHub ou email)
-2. **New project** → escolha um nome (ex: `wpremium-feedback`)
-3. Region: **South America (São Paulo)** se disponível, senão US East
-4. Defina uma senha do banco (vai precisar) e salve no seu gerenciador
-5. Espere ~1 minuto enquanto provisiona
+1. Acesse https://supabase.com e faça login (Google, GitHub ou email).
+2. **New project** → nome `wpremium-feedback`.
+3. Region: **South America (São Paulo)** se disponível.
+4. Defina uma senha do banco (anote em local seguro).
+5. Aguarde ~1 minuto enquanto provisiona.
 
 ---
 
-## 2. Criar a tabela `comments`
+## 2. Criar tabela, indexes, policies e views
 
-No painel do projeto, vá em **SQL Editor** (menu lateral) → **New query** → cole o SQL abaixo e clique em **Run**:
+No painel: **SQL Editor** → **New query** → cole o SQL abaixo → **Run**.
 
 ```sql
--- Tabela de comentários do wireframe
+-- ============================================
+-- TABELA · comments
+-- ============================================
 create table public.comments (
-  id          uuid primary key default gen_random_uuid(),
-  page        text not null,
-  element_id  text not null,
-  author_name text not null,
-  author_email text,
-  body        text not null,
-  status      text default 'open',
-  created_at  timestamptz default now()
+  id              uuid primary key default gen_random_uuid(),
+
+  -- Onde foi comentado
+  page            text not null,
+  element_id      text not null,
+  element_label   text,
+
+  -- Quem comentou
+  author_name     text not null,
+  author_email    text,
+
+  -- O conteúdo
+  body            text not null,
+
+  -- Workflow (você gerencia no admin)
+  status          text default 'open'
+                  check (status in ('open','reviewing','done','wontfix')),
+  priority        text default 'normal'
+                  check (priority in ('low','normal','high')),
+  reply_admin     text,
+
+  created_at      timestamptz default now(),
+  updated_at      timestamptz default now()
 );
 
--- Index para queries rápidas
-create index comments_page_element_idx on public.comments (page, element_id);
-create index comments_created_idx on public.comments (created_at desc);
+-- Indexes para consultas frequentes
+create index comments_author_idx   on comments (author_email);
+create index comments_page_idx     on comments (page);
+create index comments_status_idx   on comments (status);
+create index comments_element_idx  on comments (page, element_id);
+create index comments_created_idx  on comments (created_at desc);
 
--- Row-Level Security: permite inserir e ler comentários sem auth
+-- ============================================
+-- TRIGGER · auto-update updated_at
+-- ============================================
+create or replace function update_comments_timestamp()
+returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+create trigger comments_updated_at
+  before update on comments
+  for each row execute function update_comments_timestamp();
+
+-- ============================================
+-- RLS · policies (modo MVP)
+-- ============================================
 alter table public.comments enable row level security;
 
-create policy "Anyone can insert comments"
-  on public.comments for insert
-  to anon, authenticated
-  with check (true);
+-- Qualquer um pode inserir comentário (do widget público)
+create policy "Anyone can insert" on comments
+  for insert to anon, authenticated with check (true);
 
-create policy "Anyone can read comments"
-  on public.comments for select
-  to anon, authenticated
-  using (true);
+-- Qualquer um pode ler (necessário pro admin dashboard ver tudo)
+create policy "Anyone can read" on comments
+  for select to anon, authenticated using (true);
+
+-- Qualquer um pode atualizar (necessário pro admin marcar como resolved)
+-- ⚠ Em produção, troque por policy autenticada com role admin
+create policy "Anyone can update" on comments
+  for update to anon, authenticated using (true) with check (true);
+
+-- ============================================
+-- VIEWS · consolidações prontas
+-- ============================================
+
+-- View 1: comentários agrupados por autor
+create or replace view comments_by_author as
+select
+  author_name,
+  author_email,
+  count(*)                                         as total,
+  count(*) filter (where status = 'open')          as abertos,
+  count(*) filter (where status = 'reviewing')     as em_analise,
+  count(*) filter (where status = 'done')          as resolvidos,
+  count(*) filter (where status = 'wontfix')       as descartados,
+  count(distinct page)                             as paginas_tocadas,
+  count(distinct element_id)                       as dobras_tocadas,
+  min(created_at)                                  as primeiro_comentario,
+  max(created_at)                                  as ultimo_comentario
+from comments
+group by author_name, author_email
+order by total desc;
+
+-- View 2: comentários agrupados por dobra de conteúdo
+create or replace view comments_by_fold as
+select
+  page,
+  element_id,
+  element_label,
+  count(*)                                         as total,
+  count(distinct author_email)                     as autores_distintos,
+  string_agg(distinct author_name, ', ')           as quem_comentou,
+  count(*) filter (where status = 'open')          as abertos,
+  count(*) filter (where status = 'done')          as resolvidos,
+  max(created_at)                                  as ultimo_comentario
+from comments
+group by page, element_id, element_label
+order by total desc;
+
+-- View 3: lista cronológica completa (matriz autor × dobra)
+create or replace view comments_matrix as
+select
+  c.id,
+  c.author_name,
+  c.author_email,
+  c.element_label,
+  c.element_id,
+  c.page,
+  c.body,
+  c.status,
+  c.priority,
+  c.reply_admin,
+  c.created_at,
+  c.updated_at
+from comments c
+order by c.created_at desc;
 ```
 
-Esperado: mensagem verde "Success. No rows returned."
+Esperado: **Success. No rows returned.**
 
 ---
 
-## 3. Copiar credenciais públicas
+## 3. Copiar credenciais
 
-No painel do projeto, vá em **Settings** → **API** (menu lateral).
-
-Copie dois valores:
+**Settings** → **API** (menu lateral) → copie:
 
 - **Project URL** (ex: `https://abcdefgh.supabase.co`)
 - **anon / public** key (chave longa começando com `eyJ...`)
 
-> Essas duas são chaves **públicas** — podem ficar no JS do front sem problema. NÃO use a `service_role` aqui.
+> Essas duas são chaves **públicas** — seguras pro JS do front. NÃO use a `service_role` aqui.
 
 ---
 
-## 4. Colar no `js/feedback.js`
+## 4. Plugar as credenciais no projeto
 
-Abra o arquivo `js/feedback.js` (ou me passe os valores e eu colo).
-
-Localize as duas primeiras linhas dentro da função, logo no início:
+Abra `js/feedback.js` E `js/admin.js`. Em ambos, troque:
 
 ```js
-var SUPABASE_URL = 'CHANGE_ME_PROJECT_URL';
+var SUPABASE_URL      = 'CHANGE_ME_PROJECT_URL';
 var SUPABASE_ANON_KEY = 'CHANGE_ME_ANON_KEY';
 ```
 
-Substitua pelos valores que você copiou:
+por:
 
 ```js
-var SUPABASE_URL = 'https://abcdefgh.supabase.co';
+var SUPABASE_URL      = 'https://abcdefgh.supabase.co';
 var SUPABASE_ANON_KEY = 'eyJ...';
 ```
 
-Salve.
+---
+
+## 5. Configurar senha do admin
+
+Em `js/admin.js`, troque a senha padrão:
+
+```js
+var ADMIN_PASSWORD = 'wpremium2026';
+```
+
+Escolha uma senha forte. **Não compartilhe com o cliente** — só você e a equipe interna entram no `/admin.html`.
 
 ---
 
-## 5. Commit e push
+## 6. Commit e push
 
 ```bash
-git add js/feedback.js
+git add js/feedback.js js/admin.js
 git commit -m "Feedback widget · plug Supabase credentials"
 git push
 ```
@@ -100,61 +205,89 @@ GitHub Pages atualiza em ~2 minutos. Pronto.
 
 ---
 
-## Como ver os comentários
+## 🖥️ Como usar o Admin Dashboard
 
-No painel Supabase, vá em **Table Editor** → `comments`. Você vê todos os comentários organizados em tabela, com filtros e busca.
+Acesse `https://srosa18.github.io/wpremium-concierge/admin.html`
 
-Para exportar como CSV: **⋮** (três pontos) no canto superior direito da tabela → **Export to CSV**.
+1. Digite a senha
+2. Você vê 3 modos de visualização:
+   - **Por autor** (Maria → 14 comentários → lista expandida das dobras)
+   - **Por dobra** (Home · Hero → 5 autores comentaram → lista expandida)
+   - **Cronológico** (lista corrida do mais recente ao mais antigo)
+3. Filtros laterais: status, autor, página
+4. Ações por comentário: marcar resolvido, responder internamente, prioridade, copiar texto
+5. Export CSV de qualquer visualização filtrada
 
-Você também pode rodar SQL livre no **SQL Editor**:
+---
+
+## 📊 Consultas SQL úteis (SQL Editor)
+
+Tudo abaixo roda direto no Supabase Studio se preferir SQL ao dashboard custom.
 
 ```sql
--- Comentários da home, agrupados por dobra
-select element_id, count(*) as total, max(created_at) as ultimo
+-- Resumo por autor
+select * from comments_by_author;
+
+-- Resumo por dobra
+select * from comments_by_fold;
+
+-- Lista cronológica de tudo
+select * from comments_matrix limit 50;
+
+-- Comentários de um autor específico
+select element_label, body, status, created_at
 from comments
-where page = 'index'
-group by element_id
-order by total desc;
+where author_email = 'cliente@empresa.com'
+order by created_at;
 
--- Tudo de um cliente específico
-select * from comments where author_email = 'cliente@empresa.com' order by created_at desc;
+-- Comentários abertos por página
+select page, count(*) as abertos
+from comments
+where status = 'open'
+group by page
+order by abertos desc;
 
--- Comentários abertos (não resolvidos)
-select * from comments where status = 'open' order by created_at;
+-- Top 10 dobras mais comentadas
+select element_label, count(*) as total
+from comments
+group by element_label
+order by total desc
+limit 10;
 ```
 
 ---
 
-## Como esconder o widget
+## 🛡️ Notas de segurança
 
-- **Permanente:** comente as duas linhas `<script src="js/feedback.js"></script>` nos HTMLs
-- **Temporário (URL):** acesse com `?fb=off` no fim da URL — esconde só naquela aba
-- **Para tirar screenshot:** adicione classe `fb-off` no `<body>` via DevTools
+**Estado atual (MVP):** RLS permite read/insert/update por anyone via anon key.
+
+Isso é OK para um **wireframe de revisão interna** porque:
+- Não tem dados sensíveis (PII real)
+- O link é compartilhado apenas com cliente confiável
+- A senha do `/admin.html` protege escrita pesada
+
+**Quando virar produto recorrente**, troque:
+- Policies de `update` por roles autenticadas (Supabase Auth)
+- Senha hardcoded por magic link / SSO
+- Adicionar `project_id` na tabela (multi-tenancy)
+
+Por enquanto: simples e funcional.
 
 ---
 
-## Quanto custa
+## 🛑 Desligando o widget para apresentações
+
+- **URL temporária:** adicione `?fb=off` no fim do link → some o widget e o banner
+- **Permanente:** comente `<script src="js/feedback.js"></script>` no HTML
+- **Por dispositivo:** abra console do navegador → `document.body.classList.add('fb-off')`
+
+---
+
+## 💸 Custo
 
 **R$ 0**. O free tier do Supabase comporta:
-- 500 MB de banco
-- 5 GB de transferência/mês
-- 50.000 usuários ativos/mês (não usamos auth, então N/A)
+- 500 MB DB · ~500.000 comentários
+- 5 GB transferência/mês
 - 2 projetos ativos
 
-Comentários ocupam ~1 KB cada. 500 MB = ~500.000 comentários. Para um wireframe sendo revisado por dezenas de pessoas: zero risco de estourar.
-
----
-
-## v2 · Quando virar produto
-
-Quando isso virar um produto recorrente (ferramenta de review para vários projetos), adicionar:
-
-- Auth com magic link (Supabase já tem nativo)
-- Multi-tenancy (`project_id` na tabela)
-- Status workflow (open → in-review → resolved → archived)
-- Threading (reply)
-- Notificações por email (Supabase Functions ou Resend)
-- Dashboard admin com filtros, tags, export rico
-- Modo "screenshot annotation" (cliente desenha em cima da página)
-
-Por enquanto, o MVP entrega o essencial: cliente comenta, você consolida.
+Para wireframe revisado por dezenas de pessoas: muito longe de estourar.
