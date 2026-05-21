@@ -39,14 +39,15 @@
   line-height:1;
 }
 
-/* Override para hero · pin alinhado com a borda do hero (sem gutter global,
-   já que o hero está dentro de um container que já lida com padding) */
-.hero > .fb-pin{
-  top:16px;
+/* Override: pin dentro de elementos que NÃO são <section> full-width
+   (cards, asides, main, hero, divs com largura limitada) usa right:16px
+   simples — canto direito do próprio elemento. Sem usar --fb-gutter,
+   porque o gutter foi pensado pra ancoragem em sections de viewport-wide. */
+[data-comment-id]:not(section) > .fb-pin{
   right:16px;
 }
 @media (max-width:640px){
-  .hero > .fb-pin{ top:12px; right:12px; }
+  [data-comment-id]:not(section) > .fb-pin{ right:12px; top:12px; }
 }
 .fb-pin:hover{
   background:var(--accent);
