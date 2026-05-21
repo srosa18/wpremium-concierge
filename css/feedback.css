@@ -38,6 +38,16 @@
   font-family:var(--ff);
   line-height:1;
 }
+
+/* Override para hero · pin alinhado com a borda do hero (sem gutter global,
+   já que o hero está dentro de um container que já lida com padding) */
+.hero > .fb-pin{
+  top:16px;
+  right:16px;
+}
+@media (max-width:640px){
+  .hero > .fb-pin{ top:12px; right:12px; }
+}
 .fb-pin:hover{
   background:var(--accent);
   transform:scale(1.08);
