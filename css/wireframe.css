@@ -528,6 +528,58 @@ input,textarea,select{font-family:inherit;font-size:13px;color:var(--g900);}
   margin:-20px -20px 20px;height:200px;
 }
 .mobile-stage .mob-hero .ph{height:100%;border-radius:0;}
+
+/* QR Ticket · welcome in-lounge */
+.qr-ticket{
+  background:var(--g100);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px 20px;
+  margin:-20px -20px 24px;
+  text-align:center;
+}
+.qr-ticket-label{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--g600);font-weight:600;margin-bottom:16px;
+}
+.qr-ticket-img{
+  width:160px;height:160px;
+  background:var(--white);
+  padding:12px;border-radius:12px;
+  border:1px solid var(--border);
+  margin:0 auto 16px;display:block;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.qr-ticket-meta{
+  font-size:11px;color:var(--g700);line-height:1.5;
+  margin-bottom:16px;
+}
+.qr-ticket-meta strong{font-size:13px;color:var(--g900);font-weight:600;}
+.qr-ticket-meta span{font-size:10px;color:var(--g600);}
+
+.wallet-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin-top:16px;
+}
+.wallet-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  height:40px;padding:0 8px;
+  border-radius:var(--r-pill);
+  background:#000;color:#fff;
+  font-size:10px;font-weight:600;
+  letter-spacing:.04em;
+  border:none;cursor:pointer;
+  font-family:var(--ff);
+  transition:opacity .15s ease, transform .1s ease;
+}
+.wallet-btn:hover{opacity:.85;}
+.wallet-btn:active{transform:scale(.98);}
+.wallet-btn svg{flex-shrink:0;}
+
+.qr-divider{
+  height:1px;background:var(--border);
+  margin:0 -20px 24px;
+}
 .quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0;}
 .qa-btn{
   background:var(--g100);border-radius:var(--r-md);
