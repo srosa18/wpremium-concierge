@@ -520,25 +520,32 @@
       main.appendChild(reply);
     }
 
+    var isDone    = c.status === 'done';
+    var isWontfix = c.status === 'wontfix';
+    var isClosed  = isDone || isWontfix;
+
     var actions = el('div', { 'class':'adm-comment-actions' });
     actions.innerHTML = ''+
-      (c.status !== 'done'      ? '<button class="adm-btn" data-act="done">✓ Resolver</button>' : '')+
-      (c.status !== 'reviewing' && c.status !== 'done' ? '<button class="adm-btn" data-act="reviewing">Em análise</button>' : '')+
-      (c.status === 'done'      ? '<button class="adm-btn" data-act="open">Reabrir</button>' : '')+
+      (!isClosed ? '<button class="adm-btn" data-act="done">✓ Resolver</button>' : '')+
+      (c.status === 'open' ? '<button class="adm-btn" data-act="reviewing">Em análise</button>' : '')+
+      (isClosed ? '<button class="adm-btn" data-act="open">Reabrir</button>' : '')+
       '<button class="adm-btn" data-act="reply">📝 Responder</button>'+
       '<button class="adm-btn adm-btn-icon" data-act="open-link" title="Ver no wireframe">↗</button>'+
-      '<button class="adm-btn adm-btn-icon adm-btn-danger" data-act="delete" title="Excluir">✕</button>';
+      (isWontfix
+        ? '<button class="adm-btn adm-btn-icon adm-btn-danger" data-act="delete-hard" title="Excluir definitivamente do banco">🗑</button>'
+        : '<button class="adm-btn adm-btn-icon" data-act="discard" title="Descartar">✕</button>');
 
     actions.addEventListener('click', function(e){
       var btn = e.target.closest('button[data-act]');
       if (!btn) return;
       var act = btn.getAttribute('data-act');
-      if (act === 'done')      return updateComment(c.id, { status:'done' });
-      if (act === 'reviewing') return updateComment(c.id, { status:'reviewing' });
-      if (act === 'open')      return updateComment(c.id, { status:'open' });
-      if (act === 'reply')     return showReplyEditor(main, c);
-      if (act === 'open-link') return openInWireframe(c);
-      if (act === 'delete')    return deleteComment(c.id);
+      if (act === 'done')        return updateComment(c.id, { status:'done' });
+      if (act === 'reviewing')   return updateComment(c.id, { status:'reviewing' });
+      if (act === 'open')        return updateComment(c.id, { status:'open' });
+      if (act === 'reply')       return showReplyEditor(main, c);
+      if (act === 'open-link')   return openInWireframe(c);
+      if (act === 'discard')     return discardComment(c.id);
+      if (act === 'delete-hard') return deleteComment(c.id);
     });
 
     wrap.appendChild(main);
@@ -581,17 +588,38 @@
     }).catch(function(){ toast('Erro ao salvar — verifique conexão.'); });
   }
 
+  /* Descarte lógico · move pra "Descartados" (status=wontfix) · reversível via Reabrir */
+  function discardComment(id){
+    confirmModal({
+      title: 'Descartar comentário?',
+      msg: 'O comentário será movido para "Descartados". Você pode restaurá-lo a qualquer momento pelo botão "Reabrir" no filtro Descartados.',
+      confirmLabel: 'Descartar',
+      cancelLabel: 'Cancelar',
+      danger: false
+    }).then(function(ok){
+      if (!ok) return;
+      sbPatch(id, { status:'wontfix' }).then(function(){
+        toast('Comentário descartado.');
+        loadData();
+      }).catch(function(err){
+        toast('Erro ao descartar.');
+        console.error('[admin] discard failed:', err);
+      });
+    });
+  }
+
+  /* Exclusão definitiva · só disponível em Descartados · remove do banco */
   function deleteComment(id){
     confirmModal({
-      title: 'Excluir comentário?',
-      msg: 'Esta ação não pode ser desfeita. O comentário será removido definitivamente do banco.',
-      confirmLabel: 'Excluir',
+      title: 'Excluir definitivamente?',
+      msg: 'Esta ação não pode ser desfeita. O comentário será removido permanentemente do banco. Para apenas ocultá-lo, use "Descartar".',
+      confirmLabel: 'Excluir definitivamente',
       cancelLabel: 'Cancelar',
       danger: true
     }).then(function(ok){
       if (!ok) return;
       sbDelete(id).then(function(){
-        toast('Comentário excluído.');
+        toast('Comentário excluído do banco.');
         loadData();
       }).catch(function(err){
         toast('Erro ao excluir · verifique a policy de DELETE no Supabase.');
